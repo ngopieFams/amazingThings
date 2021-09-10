@@ -1,0 +1,19 @@
+{
+    "develop": {
+        "course": "https://course-services-dev2.pijarmahir.id",
+        "web": "https://dev2.pijarmahir.id"
+    },
+    "release": [
+        "https://course-services-mainstage2.pijarmahir.id",
+        "https://mainstage2.pijarmahir.id",
+        "https://*.pijarmahir.id",
+        "http://*.pijarmahir.id",
+        "http://localhost:8795",
+        "http://127.0.0.1:8795"
+    ],
+    "production": [
+        "https://course-services.pijarmahir.id",
+        "https://*.pijarmahir.id",
+        "http://*.pijarmahir.id"
+    ]
+}
