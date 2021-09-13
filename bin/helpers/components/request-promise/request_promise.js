@@ -10,11 +10,7 @@ const requestPromise = async (options)=>{
       logger.log('requestPromise',`error response code : ${res.errorcode}`,'info');
       return wrapper.error(new InternalServerError('Failed Request Data'));
     }
-    if(!res.success){
-      logger.log('requestPromise',`error response code : ${res.errorcode}`,'info');
-      return wrapper.error(new InternalServerError('Failed Request Data'));
-    }
-    return wrapper.data(res.data);
+    return wrapper.data(res);
   }).catch((_)=>{
     logger.log('requestPromise','error while getting from api','info');
     return wrapper.error(new InternalServerError('Failed Request Data'));

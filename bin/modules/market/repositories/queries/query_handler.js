@@ -1,13 +1,13 @@
 
-const User = require('./domain');
+const Market = require('./domain');
 const Mongo = require('../../../../helpers/databases/mongodb/db');
 const config = require('../../../../infra/configs/global_config');
 const db = new Mongo(config.get('/mongoDbUrl'));
-const user = new User(db);
+const market = new Market(db);
 
-const getUser = async (userId) => {
+const exchangeInfo = async () => {
   const getData = async () => {
-    const result = await user.viewUser(userId);
+    const result = await market.exchangeInfo();
     return result;
   };
   const result = await getData();
@@ -15,5 +15,5 @@ const getUser = async (userId) => {
 };
 
 module.exports = {
-  getUser
+  exchangeInfo
 };
