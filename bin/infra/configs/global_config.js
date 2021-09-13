@@ -26,6 +26,11 @@ const config = {
     port: process.env.REDIS_PORT,
     password: process.env.REDIS_PASSWORD
   },
+  binanceConfig: {
+    apiKey: process.env.API_KEY,
+    secretKey: process.env.SECRET_KEY,
+    domain: process.env.BINANCE_DOMAIN
+  },
   corsOriginConfig: process.env.CORS_ORIGIN,
 };
 
