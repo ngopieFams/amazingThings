@@ -8,12 +8,15 @@ class Query {
     this.db = db;
   }
 
-  async getExchangeInformation() {
+  async getExchangeInformation(query) {
     const options = {
       url: `${binanceConfig.domain}/api/v3/exchangeInfo`,
       headers: {
         'Content-Type': 'application/json',
         method:'GET'
+      },
+      qs:{
+        ...query
       }
     };
     const recordset= await rp.requestPromise(options);

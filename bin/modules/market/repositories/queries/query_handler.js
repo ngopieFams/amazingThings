@@ -5,12 +5,12 @@ const config = require('../../../../infra/configs/global_config');
 const db = new Mongo(config.get('/mongoDbUrl'));
 const market = new Market(db);
 
-const exchangeInfo = async () => {
-  const getData = async () => {
-    const result = await market.exchangeInfo();
+const exchangeInfo = async (query) => {
+  const getData = async (query) => {
+    const result = await market.exchangeInfo(query);
     return result;
   };
-  const result = await getData();
+  const result = await getData(query);
   return result;
 };
 

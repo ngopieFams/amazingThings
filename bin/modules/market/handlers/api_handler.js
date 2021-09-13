@@ -7,12 +7,13 @@ const validator = require('../utils/validator');
 const { ERROR:httpError, SUCCESS:http } = require('../../../helpers/http-status/status_code');
 
 const exchangeInfo = async (req, res) => {
-  const getData = async () => queryHandler.exchangeInfo();
+  const query = req.query;
+  const getData = async (query) => queryHandler.exchangeInfo(query);
   const sendResponse = async (result) => {
     (result.err) ? wrapper.response(res, 'fail', result, 'Get Data', httpError.NOT_FOUND)
-      : wrapper.response(res, 'success', result, 'Get Data', http.OK);
+      : wrapper.paginationResponse(res, 'success', result, 'Get Data', http.OK);
   };
-  sendResponse(await getData());
+  sendResponse(await getData(query));
 };
 
 module.exports = {

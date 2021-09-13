@@ -10,12 +10,21 @@ class Market {
     this.query = new Query(db);
   }
 
-  async exchangeInfo() {
-    const retrieveExchangeInfo = await this.query.getExchangeInformation();
+  async exchangeInfo(query) {
+    const retrieveExchangeInfo = await this.query.getExchangeInformation(query);
     if(retrieveExchangeInfo.err){
       return wrapper.error(new NotFoundError('Data Tidak Ditemukan'));
     }
-    return wrapper.data(retrieveExchangeInfo.data);
+    const {data} = retrieveExchangeInfo;
+    const result = data.symbols;
+    const date = new Date(data.serverTime);
+    const meta = {
+      timezone: data.timezone,
+      serverTime: date.toString(),
+      rateLimits:data.rateLimits,
+      exchangeFilters:data.exchangeFilters
+    };
+    return wrapper.paginationData(result,meta);
   }
 
 }
