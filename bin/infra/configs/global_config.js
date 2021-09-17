@@ -4,6 +4,12 @@ const confidence = require('confidence');
 const config = {
   port: process.env.PORT,
   mongoDbUrl: process.env.MONGO_DATABASE_URL,
+  basicAuthApi: [
+    {
+      username: process.env.BASIC_AUTH_USERNAME,
+      password: process.env.BASIC_AUTH_PASSWORD
+    }
+  ],
   mysqlConfig: {
     connectionLimit: process.env.MYSQL_CONNECTION_LIMIT,
     host: process.env.MYSQL_HOST,
