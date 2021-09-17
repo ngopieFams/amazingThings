@@ -5,6 +5,7 @@ const basicAuth = require('../auth/basic_auth_helper');
 const wrapper = require('../helpers/utils/wrapper');
 const mongoConnectionPooling = require('../helpers/databases/mongodb/connection');
 const market = require('./market');
+const gridbot = require('./grid-bot');
 
 function AppServer() {
   this.server = restify.createServer({
@@ -41,6 +42,7 @@ function AppServer() {
   
 
   market.routes(this.server);
+  gridbot.routes(this.server);
 
   //Initiation
   mongoConnectionPooling.init();
